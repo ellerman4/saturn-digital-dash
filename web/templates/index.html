@@ -16,10 +16,10 @@
       
       // Call from Python so we can access the returned array of vehicle data
       let vehicle_data_array = await eel.vehicle_data()();
-      mph_div.innerText = vehicle_data_array[0];
-      rpm_div.innerText = vehicle_data_array[1];
-      mpg_div.innerText = vehicle_data_array[2];
-      check_engine_count = vehicle_data_array[3];
+      mph_div.innerText = vehicle_data_array['vehicle_speed'];
+      rpm_div.innerText = vehicle_data_array['vehicle_rpm'];
+      mpg_div.innerText = vehicle_data_array['vehicle_fuel'] + '%';
+      check_engine_count = vehicle_data_array['vehicle_codes'];
 
       // Apply color to check engine if DTC > 0
       if (check_engine_count > 0) {
@@ -79,7 +79,7 @@
             </svg>
           <div class="currentspeed">
             <span id="mpg" class="speed"></span>
-            <span class="metric">MPG</span>
+            <span class="metric">Fuel</span>
           </div>
         </div>
       </div>
