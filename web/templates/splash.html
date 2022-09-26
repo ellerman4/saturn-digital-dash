@@ -1,0 +1,32 @@
+{% extends 'main.html' %} 
+
+{% block title %}Hello, headunit!{% endblock %}
+
+{% block head %}
+  <meta http-equiv="refresh" content="3;url=http://localhost:8000/templates/index.html" />
+
+  <style>
+    .text-focus-in {
+      animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    }
+    @keyframes text-focus-in {
+      0% {
+        filter: blur(12px);
+        opacity: 0;
+      }
+      100% {
+        filter: blur(0px);
+        opacity: 1;
+      }
+    }
+    body {
+      text-align: center;
+    }
+  </style>
+{% endblock %}
+
+
+{% block content %}
+  <img  class="text-focus-in mx-auto" src="/imgs/saturn-logo.png" alt="Saturn logo" width="500" height="500">
+{% endblock %}
+
