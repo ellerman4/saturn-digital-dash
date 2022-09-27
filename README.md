@@ -21,9 +21,18 @@ Made with
 
 <p align="center"><a href="https://github.com/brendan-w/python-OBD">python-OBD</a> for reading data via OBD-II</p>
 
+## Todo
+
+#### Live readouts for:
+- [ ] Fuel Pressure
+- [x] MPH, RPM, Fuel
+- [ ] Shift indicator
+- [ ] Engine Coolant Temperature
+- [ ] Battery voltage
+
 
 ## Usage
-### Note: This project is a WIP and should not be used in any vehicle as a main dash
+#### Note: This project is a WIP and should not be used in any vehicle as a main dash
 ```
 $ git clone https://github.com/ellerman4/saturn-digital-dash
 ```
