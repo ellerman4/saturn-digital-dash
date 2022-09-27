@@ -34,5 +34,5 @@ def vehicle_data():
 
 # Start Eel application on the splashscreen
 eel.start('templates/splash.html',
-        size=(800, 600),
+        size=(800, 650),
         jinja_templates='templates')  # Point to templates folder for Jinja templating
