@@ -12,6 +12,9 @@
       let mph_div = document.getElementById('mph');
       let rpm_div = document.getElementById('rpm');
       let mpg_div = document.getElementById('mpg');
+      let voltage_div = document.getElementById('voltage');
+      let coolant_div = document.getElementById('coolant');
+
       let check_engine = document.getElementById('check-engine');
       
       // Call from Python so we can access the returned array of vehicle data
@@ -19,8 +22,12 @@
       mph_div.innerText = vehicle_data_array['vehicle_speed'];
       rpm_div.innerText = vehicle_data_array['vehicle_rpm'];
       mpg_div.innerText = vehicle_data_array['vehicle_fuel'] + '%';
-      check_engine_count = vehicle_data_array['vehicle_codes'];
+      voltage_div.innerText = vehicle_data_array['vehicle_voltage'] + ' volts';
+      coolant_div.innerText = vehicle_data_array['vehicle_coolant'] + 'F';
 
+      // Get DTC count
+      check_engine_count = vehicle_data_array['vehicle_codes'];
+      
       // Apply color to check engine if DTC > 0
       if (check_engine_count > 0) {
         const style = document.createElement('style');
@@ -90,6 +97,10 @@
         <button class="pause">Pause</button>
         <button class="reset">Reset</button>
         <button class="lap">Lap</button>
+      </div>
+      <div class="data flex flex-col items-center justify-center mt-10">
+        <span id="voltage"></span>
+        <span id="coolant"></span>
       </div>
       
     <div class="lapsBox text-center">
