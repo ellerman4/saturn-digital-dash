@@ -27,8 +27,9 @@ Made with
 - [ ] Fuel Pressure
 - [x] MPH, RPM, Fuel
 - [ ] Shift indicator
-- [ ] Engine Coolant Temperature
-- [ ] Battery voltage
+- [X] Engine Coolant Temperature
+- [x] Battery voltage
+- [x] Check engine light
 
 
 ## Usage
