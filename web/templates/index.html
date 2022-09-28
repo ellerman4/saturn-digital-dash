@@ -6,45 +6,12 @@
   <script type="text/javascript">eel.vehicle_data();</script>
   <link rel="stylesheet" href="/css/dash.css">
   <script defer type="text/javascript" src="/js/stopwatch.js"></script>
-
-  <script type="text/javascript">
-    async function vehicle_data() {
-      let mph_div = document.getElementById('mph');
-      let rpm_div = document.getElementById('rpm');
-      let mpg_div = document.getElementById('mpg');
-      let voltage_div = document.getElementById('voltage');
-      let coolant_div = document.getElementById('coolant');
-
-      let check_engine = document.getElementById('check-engine');
-      
-      // Call from Python so we can access the returned array of vehicle data
-      let vehicle_data_array = await eel.vehicle_data()();
-      mph_div.innerText = vehicle_data_array['vehicle_speed'];
-      rpm_div.innerText = vehicle_data_array['vehicle_rpm'];
-      mpg_div.innerText = vehicle_data_array['vehicle_fuel'] + '%';
-      voltage_div.innerText = vehicle_data_array['vehicle_voltage'] + ' volts';
-      coolant_div.innerText = vehicle_data_array['vehicle_coolant'] + 'F';
-
-      // Get DTC count
-      check_engine_count = vehicle_data_array['vehicle_codes'];
-      
-      // Apply color to check engine if DTC > 0
-      if (check_engine_count > 0) {
-        const style = document.createElement('style');
-
-        style.innerHTML = `#check-engine {
-            fill: darkorange !important;
-            filter: drop-shadow(0 0 0.75rem #ff6e3d);
-          } `
-
-        document.head.appendChild(style);
-      }
-    }
-  </script>
+  <script type="text/javascript" src="/js/dash.js"></script>
 {% endblock %}
 
 {% block content %}
-  <body onload="vehicle_data()">
+  <body onload="vehicle_data(), showTime()">
+    <div id="thetime" class="data mt-2 text-xl"></div>
     <div class="data flex items-center justify-center mt-10 text-center" style="zoom: 0.65; display: flex;">
       <div class="speedometer" style="zoom: 0.7;">
         <div class="panel">
