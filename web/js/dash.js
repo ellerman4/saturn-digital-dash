@@ -29,6 +29,19 @@ async function vehicle_data() {
 
         document.head.appendChild(style);
     }
+
+
+    // Apply color to gas light if fuel < 20%
+    if (vehicle_data_array['vehicle_fuel'] < 20) {
+        const style = document.createElement('style');
+
+        style.innerHTML = `#fuel-light {
+            fill: green !important;
+            filter: drop-shadow(0 0 0.75rem #00b815);
+        } `
+
+        document.head.appendChild(style);
+    }
 }
 
 function showTime(){
