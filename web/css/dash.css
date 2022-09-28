@@ -170,3 +170,9 @@
     color: white;
     transition: ease-in-out 0.3s;
   }
+  
+  #logs {
+    background-size: cover;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/GNOME_Logs_--_logo_2019.svg/1200px-GNOME_Logs_--_logo_2019.svg.png");
+    background-repeat: no-repeat;
+  }
