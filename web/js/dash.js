@@ -55,3 +55,23 @@ function showTime(){
     
     setTimeout(showTime, 60000);
 }
+
+// Function for accessing maintenance data from python dictionary
+async function get_maintenance(){
+    // Return an array of vehicle repairs
+    let vehicle_maintenance_array = await eel.get_maintenance()();
+    console.log(vehicle_maintenance_array[0])
+    
+    // Create a sort of empty table string
+    var t = "";
+    for (var i = 0; i < vehicle_maintenance_array.length; i++){
+        var tr = "<tr>";
+        tr += "<td id='part' class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairPart']+"</td>";
+        tr += "<td class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairType']+"</td>";
+        tr += "<td class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairDate']+"</td>";
+        tr += "<td class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairMiles']+"</td>";
+        tr += "</tr>";
+        t += tr;
+    }
+    document.getElementById("posts").innerHTML += t;
+}
