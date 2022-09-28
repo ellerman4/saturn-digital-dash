@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+{% block title %}Maintenance Logs{% endblock %}
+
+{% block head %}
+<script async type="text/javascript">eel.get_maintenance();</script>
+<link rel="stylesheet" href="/css/dash.css">
+<script type="text/javascript" src="/js/dash.js"></script>
+{% endblock %}
+
+{% block content %}
+<body onload="get_maintenance()">
+    <div class="flex flex-col justify-center h-full">
+        <!-- Table -->
+        <div class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
+            <header class="px-5 py-4 border-b border-gray-100">
+                <h2 class="font-semibold text-gray-800">Maintenance Logs</h2>
+            </header>
+            <div class="p-3">
+                <div class="overflow-x-auto">
+                    <table class="table-auto w-full">
+                        <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                            <tr>
+                                <th class="p-2 whitespace-nowrap">
+                                    <div class="font-semibold text-left">Part</div>
+                                </th>
+                                <th class="p-2 whitespace-nowrap">
+                                    <div class="font-semibold text-left">Type</div>
+                                </th>
+                                <th class="p-2 whitespace-nowrap">
+                                    <div class="font-semibold text-left">Date</div>
+                                </th>
+                                <th class="p-2 whitespace-nowrap">
+                                    <div class="font-semibold text-center">Milage</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="posts" class="text-sm divide-y divide-gray-100">
+                            <!-- Table will be populated by maintenance logs with dash.js' get_maintenance() func -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
