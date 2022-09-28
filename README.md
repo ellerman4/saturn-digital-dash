@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.gyazo.com/76824485882a7008dd8238b57278e229.png" width="600px"></p>
+<p align="center"><img src="https://i.gyazo.com/2c5745059cb0fcbbc8036b2d93eb98a3.png" width="600px"></p>
 
 <h1 align="center">Saturn Digital Dash</h1>
 
