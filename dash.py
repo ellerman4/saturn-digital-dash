@@ -2,6 +2,8 @@ import eel
 import obd
 from obd import OBDStatus
 from datetime import datetime
+import sqlite3
+from sqlite3 import Error
 # Set web files folder
 eel.init('web')
 
@@ -31,6 +33,24 @@ def vehicle_data():
         print('Connection failed...')
 
     return vehicle_dict
+
+# Attempt to initialize the connection to the database
+def init_db():
+    try:
+        con = sqlite3.connect('db.db')
+        con.row_factory = sqlite3.Row   # Use row_factory to return a dictionary
+        return con.cursor()
+
+    except Error as e:
+        return e
+
+# Expose database query function to Eel
+@eel.expose
+def get_maintenance():
+    cursor = init_db()
+    cursor.execute('select * from vehicle_maintenance')
+    return [dict(row) for row in cursor.fetchall()]     # Return as a python dict to access as an array in js
+
 
 # Start Eel application on the splashscreen
 eel.start('templates/splash.html',
