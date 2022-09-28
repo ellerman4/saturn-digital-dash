@@ -60,7 +60,6 @@ function showTime(){
 async function get_maintenance(){
     // Return an array of vehicle repairs
     let vehicle_maintenance_array = await eel.get_maintenance()();
-    console.log(vehicle_maintenance_array[0])
     
     // Create a sort of empty table string
     var t = "";
