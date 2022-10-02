@@ -4,6 +4,8 @@ from obd import OBDStatus
 from datetime import datetime
 import sqlite3
 from sqlite3 import Error
+import time
+from time import strftime
 # Set web files folder
 eel.init('web')
 
@@ -35,7 +37,9 @@ def vehicle_data():
     return vehicle_dict
 
 # Attempt to initialize the connection to the database
+# Refactor later to not use global variables
 def init_db():
+    global con
     try:
         con = sqlite3.connect('db.db')
         con.row_factory = sqlite3.Row   # Use row_factory to return a dictionary
@@ -44,12 +48,37 @@ def init_db():
     except Error as e:
         return e
 
-# Expose database query function to Eel
+
+# Test CRUD functionality for vehicle_maintenance
+# Read all data from the  vehicle_maintenance table
 @eel.expose
 def get_maintenance():
+    global cursor
     cursor = init_db()
     cursor.execute('select * from vehicle_maintenance')
     return [dict(row) for row in cursor.fetchall()]     # Return as a python dict to access as an array in js
+
+# Create a new item in the vehicle_maintenance table
+@eel.expose
+def new_item(repair_part, repair_type, repair_miles):
+    cursor.execute(f'''INSERT INTO vehicle_maintenance (RepairPart, RepairDate, RepairType, RepairMiles)
+                    VALUES ('{repair_part}', date(), '{repair_type}', {repair_miles});''')
+    con.commit()
+
+# Update an item in the vehicle_maintenance table
+@eel.expose
+def update_item(repair_part, repair_type, repair_miles):
+    cursor.execute(f'''UPDATE vehicle_maintenance
+                        SET (RepairPart, RepairType, RepairDate, RepairMiles) = (?, ?, ?, ?)
+                        WHERE RepairPart = ?;''', (repair_part, repair_type, strftime("%Y-%m-%d"), repair_miles, 'test' ))   # Add primary key to table and use repair_id instead
+    con.commit()
+
+# Delete an item in the vehicle_maintenance table
+@eel.expose
+def delete_item(repair_part):
+    cursor.execute(f'''DELETE FROM vehicle_maintenance
+                        WHERE RepairPart = ?;''', (repair_part,))
+    con.commit()
 
 
 # Start Eel application on the splashscreen
