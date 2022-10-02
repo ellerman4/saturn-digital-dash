@@ -83,8 +83,8 @@ async function get_maintenance(){
         tr += "<td class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairDate']+"</td>";
         tr += "<td class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairMiles']+"</td>";
         tr += `<td>
-                    <a href="#" class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin">Edit</a>
-                    <a href="#" class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin">Remove</a>
+                    <a href="#" class="bg-blue-500 text-gray-200 rounded px-2 py-2 text-xs">Edit</a>
+                    <a href="#" class="bg-red-500 text-gray-200 rounded px-2 py-2 text-xs">Remove</a>
                 </td>`;
         tr += "</tr>";
         t += tr;
