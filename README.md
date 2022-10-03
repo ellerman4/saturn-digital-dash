@@ -1,4 +1,5 @@
-<p align="center"><img src="https://i.gyazo.com/2c5745059cb0fcbbc8036b2d93eb98a3.png" width="600px"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/106990217/193669694-80ef0857-5e06-41d7-a51c-a641d43e6e59.png" width="600px"></p>
+
 
 <h1 align="center">Saturn Digital Dash</h1>
 
@@ -33,7 +34,7 @@ Made with
 
 #### Other:
 - [X] Add simple sqlite DB for maintenance logs
-- [ ] CRUD functionality from UI
+- [X] CRUD functionality from UI
 
 ## Usage
 #### Note: This project is a WIP and should not be used in any vehicle as a main dash
@@ -56,7 +57,10 @@ Run main dash.py script
 
 ```
 
-For building a distributable binary with PyInstaller, read more [here](https://github.com/ChrisKnott/Eel).
+
+<p align="center"><img src="https://i.gyazo.com/2c5745059cb0fcbbc8036b2d93eb98a3.png" width="600px"></p>
+
+<p align="center">For building a distributable binary with PyInstaller, read more <a href="https://github.com/ChrisKnott/Eel">here</a>.</p>
 
 ##
 </br>
