@@ -7,7 +7,12 @@
                 <input id="new-RepairPart" class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"/>
             <label for="new-RepairType" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Repair Type</label>
             <div class="relative mb-5 mt-2">
-                <input id="new-RepairType" class="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"/>
+                <select id="new-RepairType" class="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border">
+                    <option value="standard replacement">OEM Replacement</option>
+                    <option value="upgraded replacement">Upgraded Replacement</option>
+                    <option value="cleaned/fixed">Cleaned/Fixed</option>
+                    <option value="other">Other</option>
+                </select>
             </div>
             <label for="new-RepairDate" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Date</label>
             <div class="relative mb-5 mt-2">
