@@ -3,6 +3,15 @@
 
 {% block head %}
 <script async type="text/javascript">eel.get_maintenance();</script>
+<script type="text/javascript">
+    eel.expose(getRepairID);
+    function getRepairID() {
+        // Get parent table rowid which contains the RepairID PK field in our database
+        var repair_id = event.target.parentNode.parentNode.id;
+        console.log(repair_id);
+    }
+</script>
+
 <link rel="stylesheet" href="/css/dash.css">
 <script type="text/javascript" src="/js/dash.js"></script>
 {% endblock %}
