@@ -67,17 +67,17 @@ def new_item(repair_part, repair_type, repair_miles):
 
 # Update an item in the vehicle_maintenance table
 @eel.expose
-def update_item(repair_part, repair_type, repair_miles):
+def update_item(repair_part, repair_type, repair_miles, repair_id):
     cursor.execute(f'''UPDATE vehicle_maintenance
                         SET (RepairPart, RepairType, RepairDate, RepairMiles) = (?, ?, ?, ?)
-                        WHERE RepairPart = ?;''', (repair_part, repair_type, strftime("%Y-%m-%d"), repair_miles, 'test' ))   # Add primary key to table and use repair_id instead
+                        WHERE RepairID = ?;''', (repair_part, repair_type, strftime("%Y-%m-%d"), repair_miles, repair_id ))   # Add primary key to table and use repair_id instead
     con.commit()
 
 # Delete an item in the vehicle_maintenance table
 @eel.expose
-def delete_item(repair_part):
+def delete_item(repair_id):
     cursor.execute(f'''DELETE FROM vehicle_maintenance
-                        WHERE RepairPart = ?;''', (repair_part,))
+                        WHERE RepairID = ?;''', (repair_id,))
     con.commit()
 
 
