@@ -4,19 +4,19 @@
         <div class="relative py-8 px-5 md:px-10 bg-white shadow-md rounded border border-gray-400">
             <h1 class="text-gray-800 font-lg font-bold tracking-normal leading-tight mb-4">New Maintenance Record</h1>
             <label for="repair-part" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Part</label>
-                <input id="repair-part" class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"/>
+                <input id="new-RepairPart" class="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"/>
             <label for="repair-type" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Repair Type</label>
             <div class="relative mb-5 mt-2">
-                <input id="repair-type" class="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"/>
+                <input id="new-RepairType" class="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"/>
             </div>
             <label for="repair-date" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Date</label>
             <div class="relative mb-5 mt-2">
-                <input id="repair-date" class="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="YY-MM-DD" />
+                <input id="new-RepairDate" class="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="YY-MM-DD" />
             </div>
             <label for="repair-miles" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Miles</label>
-                <input id="repair-miles" class="mb-8 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"/>
+                <input id="new-RepairMiles" class="mb-8 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"/>
             <div class="flex items-center justify-start w-full">
-                <button class="bg-indigo-700 rounded text-white px-8 py-2 text-sm">Submit</button>
+                <button class="bg-indigo-700 rounded text-white px-8 py-2 text-sm" onclick="newItem()">Submit</button>
                 <button class="ml-3 bg-gray-300 text-gray-600 rounded px-8 py-2 text-sm" onclick="modalHandler()">Cancel</button>
             </div>
         </div>
