@@ -19,7 +19,7 @@
                 <input id="new-RepairDate" class="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="YY-MM-DD" />
             </div>
             <label for="new-RepairMiles" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Miles</label>
-                <input id="new-RepairMiles" class="mb-8 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"/>
+                <input id="new-RepairMiles" type="number" min="0" step="1" class="mb-8 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"/>
             <div class="flex items-center justify-start w-full">
                 <button class="bg-indigo-700 rounded text-white px-8 py-2 text-sm" onclick="newItem()">Submit</button>
                 <button class="ml-3 bg-gray-300 text-gray-600 rounded px-8 py-2 text-sm" onclick="modalHandler()">Cancel</button>
