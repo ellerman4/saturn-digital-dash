@@ -76,18 +76,18 @@ async function get_maintenance(){
     
     // Create a sort of empty table string
     var t = "";
+    // Loop through our array to populate the table string
     for (var i = 0; i < vehicle_maintenance_array.length; i++){
-        var tr = "<tr>";
+        // Store the RepairID PK in the table rowid field
+        var tr = `<tr id="${vehicle_maintenance_array[i]['RepairID']}">`;
         tr += "<td id='part' class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairPart']+"</td>";
         tr += "<td class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairType']+"</td>";
         tr += "<td class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairDate']+"</td>";
         tr += "<td class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairMiles']+"</td>";
-        tr += `<td>
-                    <a href="#" class="bg-blue-500 text-gray-200 rounded px-2 py-2 text-xs">Edit</a>
-                    <a href="#" class="bg-red-500 text-gray-200 rounded px-2 py-2 text-xs">Remove</a>
-                </td>`;
+        tr += `<td> <button id="remove-record" class="bg-red-500 text-gray-200 rounded px-2 py-2 text-xs" onclick="getRepairID()" />Remove</td>`;
         tr += "</tr>";
         t += tr;
     }
+    // Append the table string to posts
     document.getElementById("posts").innerHTML += t;
 }
