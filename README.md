@@ -33,7 +33,7 @@ Made with
 
 #### Other:
 - [X] Add simple sqlite DB for maintenance logs
-- [ ] CRUD functionality from UI
+- [X] CRUD functionality from UI
 
 ## Usage
 #### Note: This project is a WIP and should not be used in any vehicle as a main dash
