@@ -3,12 +3,13 @@
 
 {% block head %}
 <script async type="text/javascript">eel.get_maintenance();</script>
+<script async type="text/javascript">eel.delete_item(repair_id);</script>
 <script type="text/javascript">
-    eel.expose(getRepairID);
-    function getRepairID() {
+    //eel.expose(getRepairID);
+    async function deleteItem() {
         // Get parent table rowid which contains the RepairID PK field in our database
         var repair_id = event.target.parentNode.parentNode.id;
-        console.log(repair_id);
+        eel.delete_item(repair_id);
     }
 </script>
 

@@ -84,7 +84,7 @@ async function get_maintenance(){
         tr += "<td class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairType']+"</td>";
         tr += "<td class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairDate']+"</td>";
         tr += "<td class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairMiles']+"</td>";
-        tr += `<td> <button id="remove-record" class="bg-red-500 text-gray-200 rounded px-2 py-2 text-xs" onclick="getRepairID()" />Remove</td>`;
+        tr += `<td> <button id="remove-record" class="bg-red-500 text-gray-200 rounded px-2 py-2 text-xs" onclick="deleteItem()" />Remove</td>`;
         tr += "</tr>";
         t += tr;
     }
