@@ -91,3 +91,19 @@ async function get_maintenance(){
     // Append the table string to posts
     document.getElementById("posts").innerHTML += t;
 }
+
+// Function for deleting an item in the database table
+async function deleteItem() {
+    // Get parent table rowid which contains the RepairID PK field in our database
+    var repair_id = event.target.parentNode.parentNode.id;
+    eel.delete_item(repair_id);
+}
+
+
+// Function for creating a new item in the database table
+async function newItem() {
+    var repair_part = document.getElementById("new-RepairPart").value;
+    var repair_type = document.getElementById("new-RepairType").value;
+    var repair_miles = document.getElementById("new-RepairMiles").value;
+    eel.new_item(repair_part, repair_type, repair_miles);   // Call python function with values from the returned js
+}
