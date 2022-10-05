@@ -6,35 +6,9 @@ import sqlite3
 from sqlite3 import Error
 import time
 from time import strftime
+
 # Set web files folder
 eel.init('web')
-
-@eel.expose
-def vehicle_data():
-    vehicle_dict = {}
-    # Try to make a connection via ELM327 OBD-II interface
-    try:
-        connection = obd.OBD(fast=False) # auto-connects to USB or RF port
-
-        vehicle_dict['vehicle_speed'] = connection.query(obd.commands.SPEED).value.to("mph") # send the command, and parse the response
-        vehicle_dict['vehicle_rpm'] = connection.query(obd.commands.RPM).value
-        vehicle_dict['vehicle_fuel'] = connection.query(obd.commands.FUEL_LEVEL).value
-        vehicle_dict['vehicle_codes'] = connection.query(obd.commands.DTC_count).value
-        vehicle_dict['vehicle_voltage'] = connection.query(obd.commands.ELM_VOLTAGE).value
-        vehicle_dict['vehicle_coolant'] = connection.query(obd.commands.COOLANT_TEMP).value
-
-    # Use default values if failed
-    except:
-        vehicle_dict['vehicle_speed'] = 0
-        vehicle_dict['vehicle_rpm'] = 800
-        vehicle_dict['vehicle_fuel'] = 100
-        vehicle_dict['vehicle_codes'] = 0
-        vehicle_dict['vehicle_voltage'] = 12.8
-        vehicle_dict['vehicle_coolant'] = 200
-
-        print('Connection failed...')
-
-    return vehicle_dict
 
 # Attempt to initialize the connection to the database
 # Refactor later to not use global variables
@@ -57,6 +31,45 @@ def get_maintenance():
     cursor = init_db()
     cursor.execute('select * from vehicle_maintenance')
     return [dict(row) for row in cursor.fetchall()]     # Return as a python dict to access as an array in js
+
+
+# Function for getting the milage of the previous oil change
+def oil_change():
+    cursor.execute(f'''SELECT RepairMiles FROM vehicle_maintenance
+                        WHERE RepairType = ?
+                        ORDER BY RepairDate
+                        LIMIT 1;''', ("oil change",))
+    return int(cursor.fetchone()['RepairMiles'])
+
+@eel.expose
+def vehicle_data():
+    vehicle_dict = {}
+    # Try to make a connection via ELM327 OBD-II interface
+    try:
+        connection = obd.OBD(fast=False) # auto-connects to USB or RF port
+
+        vehicle_dict['vehicle_speed'] = connection.query(obd.commands.SPEED).value.to("mph") # send the command, and parse the response
+        vehicle_dict['vehicle_rpm'] = connection.query(obd.commands.RPM).value
+        vehicle_dict['vehicle_fuel'] = connection.query(obd.commands.FUEL_LEVEL).value
+        vehicle_dict['vehicle_codes'] = connection.query(obd.commands.DTC_count).value
+        vehicle_dict['vehicle_voltage'] = connection.query(obd.commands.ELM_VOLTAGE).value
+        vehicle_dict['vehicle_coolant'] = connection.query(obd.commands.COOLANT_TEMP).value
+        vehicle_dict['last_oil_change'] = int(connection.query(obd.commands.KM).value.to("mi")) - oil_change()
+
+    # Use default values if failed
+    except:
+        vehicle_dict['vehicle_speed'] = 0
+        vehicle_dict['vehicle_rpm'] = 800
+        vehicle_dict['vehicle_fuel'] = 100
+        vehicle_dict['vehicle_codes'] = 0
+        vehicle_dict['vehicle_voltage'] = 12.8
+        vehicle_dict['vehicle_coolant'] = 200
+        vehicle_dict['last_oil_change'] = 3000
+
+        print('Connection failed...')
+
+    return vehicle_dict
+
 
 # Create a new item in the vehicle_maintenance table
 @eel.expose
