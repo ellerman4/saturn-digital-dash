@@ -32,9 +32,13 @@ Made with
 - [x] Battery voltage
 - [x] Check engine light
 
+
 #### Other:
 - [X] Add simple sqlite DB for maintenance logs
 - [X] CRUD functionality from UI
+- [ ] Miles since last oil change
+
+
 
 ## Usage
 #### Note: This project is a WIP and should not be used in any vehicle as a main dash
