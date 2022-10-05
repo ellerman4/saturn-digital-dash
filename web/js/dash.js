@@ -81,9 +81,10 @@ async function get_maintenance(){
         // Store the RepairID PK in the table rowid field
         var tr = `<tr id="${vehicle_maintenance_array[i]['RepairID']}">`;
         tr += "<td id='part' class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairPart']+"</td>";
-        tr += "<td class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairType']+"</td>";
-        tr += "<td class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairDate']+"</td>";
-        tr += "<td class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairMiles']+"</td>";
+        tr += "<td id='type' class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairType']+"</td>";
+        tr += "<td id='date' class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairDate']+"</td>";
+        tr += "<td id='miles' class='p-2 whitespace-nowrap'>"+vehicle_maintenance_array[i]['RepairMiles']+"</td>";
+        tr += `<td> <button id="edit-record" class="bg-green-600 text-gray-200 rounded px-2 py-2 text-xs" onclick="modalHandler(true), populate()" />Edit</td>`;
         tr += `<td> <button id="remove-record" class="bg-red-500 text-gray-200 rounded px-2 py-2 text-xs" onclick="deleteItem()" />Remove</td>`;
         tr += "</tr>";
         t += tr;
@@ -106,4 +107,38 @@ async function newItem() {
     var repair_type = document.getElementById("new-RepairType").value;
     var repair_miles = document.getElementById("new-RepairMiles").value;
     eel.new_item(repair_part, repair_type, repair_miles);   // Call python function with values from the returned js
+}
+
+// Populate the modal form input fields with the database entry selected for editing
+function populate() {
+    // Access the repair_id value stored in the table row's id tag
+    var repair_id = event.target.parentNode.parentNode;
+
+    // Fill the RepairID on the modal form field with the repair_id.id value
+    // This value will be accessed by the editItem() function
+    document.getElementById("RepairID").innerText = repair_id.id;
+
+    // Get input elements and set values to repair_id children elements' innerText
+    document.getElementById("new-RepairPart").value = repair_id.querySelector('#part').innerText;
+    document.getElementById("new-RepairType").value = repair_id.querySelector('#type').innerText;
+    document.getElementById("new-RepairDate").value = repair_id.querySelector('#date').innerText;
+    document.getElementById("new-RepairMiles").value = repair_id.querySelector('#miles').innerText;
+
+    // Populate is only called when editing, so change submit-btn onclick attr from newItem() to editItem()
+    // The onclick attribute will be reset to its default value, newItem(), when the form is closed
+    document.getElementById("submit-btn").setAttribute( "onClick", "editItem();" );
+}
+
+
+// Function for editing an item in the database
+async function editItem() {
+    // Gather database entry field values
+    var repair_part = document.getElementById("new-RepairPart").value;
+    var repair_type = document.getElementById("new-RepairType").value;
+    var repair_date = document.getElementById("new-RepairDate").value;
+    var repair_miles = document.getElementById("new-RepairMiles").value;
+    var repair_id = document.getElementById("RepairID").innerText;
+
+    // Call python function with values from the returned js
+    eel.edit_item(repair_part, repair_type, repair_date, repair_miles, repair_id);
 }
