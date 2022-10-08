@@ -79,7 +79,7 @@
         createEl({ tag: "li", content: e, parent: fragment, addToParent: 1 });
       });
       LIST_LAPS.appendChild(fragment);
-      BTN_CLEAR.style.display = SETTINGS.laps.length > 0 ? "block" : "none";
+      BTN_CLEAR.style.display = SETTINGS.laps.length > 0 ? "inline" : "none";
     }
   
     function getDisplay() {
