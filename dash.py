@@ -76,8 +76,9 @@ def vehicle_data():
 def clear_dtc():
     try:
         obd.commands.CLEAR_DTC
+        print('DTCs cleared!')
     except Error as e:
-        print('Command failed, DTCs not available')
+        print('Command failed, DTCs not available.')
         return e
 
 
