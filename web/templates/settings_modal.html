@@ -1,3 +1,13 @@
+{% block head %}
+<script type="text/javascript">
+    // Wait for the page to load
+    document.addEventListener("DOMContentLoaded", function(){
+        // Set onClick attr to call clear_dtc() func from main python script
+        document.getElementById("dtc-btn").setAttribute( "onClick", "eel.clear_dtc();" );
+    });
+</script>
+{% endblock %}
+
 <!-- Modal block starts -->
 <div class="ml-12 py-12 transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0" id="settings-modal">
     <div role="alert" class="container mx-auto w-11/12 md:w-2/3 max-w-lg">
@@ -24,7 +34,7 @@
                 </div>
             </div>
             <div class="flex items-center w-full place-content-center mb-2">
-                <button class="w-full bg-rose-500 text-gray-100 rounded px-8 py-2 text-sm">Clear DTCs</button>
+                <button id="dtc-btn" class="w-full bg-rose-500 text-gray-100 rounded px-8 py-2 text-sm">Clear DTCs</button>
             </div>
             <div class="flex items-center w-full place-content-center">
                 <button class="bg-gray-300 text-gray-600 rounded px-8 py-2 text-sm" onclick="modalHandler()">Close</button>
