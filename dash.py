@@ -71,6 +71,16 @@ def vehicle_data():
     return vehicle_dict
 
 
+# Function to clear DTCs via button insettings_modal.html
+@eel.expose
+def clear_dtc():
+    try:
+        obd.commands.CLEAR_DTC
+    except Error as e:
+        print('Command failed, DTCs not available')
+        return e
+
+
 # Create a new item in the vehicle_maintenance table
 @eel.expose
 def new_item(repair_part, repair_type, repair_miles):
