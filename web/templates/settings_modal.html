@@ -1,0 +1,53 @@
+<!-- Modal block starts -->
+<div class="ml-12 py-12 transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0" id="settings-modal">
+    <div role="alert" class="container mx-auto w-11/12 md:w-2/3 max-w-lg">
+        <div class="relative py-8 px-5 md:px-10 bg-white shadow-md rounded border border-gray-400">
+            <div class="flex justify-between mb-4 items-center w-full">
+                <h1 class="text-gray-600 px-8 py-2 text-sm font-bold">Test:</h1>
+                <div class="flex gap-2.5">
+                    <div>
+                        <input type="radio" name="option" id="1" class="peer hidden" checked />
+                        <label for="1" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">On</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="option" id="2" class="peer hidden" />
+                        <label for="2" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">Off</label>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between mb-4 items-center w-full">
+                <h1 class="text-gray-600 px-8 py-2 text-sm font-bold">Test 2:</h1>
+                <div class="flex gap-2.5">
+                    <div>
+                        <input type="radio" name="option-2" id="3" class="peer hidden" checked />
+                        <label for="3" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">On</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="option-2" id="4" class="peer hidden" />
+                        <label for="4" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white">Off</label>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center w-full place-content-center">
+                <button class="ml-3 bg-gray-300 text-gray-600 rounded px-8 py-2 text-sm" onclick="modalHandler()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let modal = document.getElementById("settings-modal");
+    function modalHandler(val) {
+        if (val) {
+            modalOpen(modal);
+        } else {
+            modalClose(modal);
+        }
+    }
+    function modalClose(el) {
+        el.style.display = "none";
+    }
+    function modalOpen(el, display) {
+        el.style.display = display || "flex";
+    }
+</script>
+<!-- Modal block ends -->
