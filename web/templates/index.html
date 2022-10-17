@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-  <body onload="vehicle_data(), showTime()">
+  <body onload="vehicle_data(), showTime(), modalHandler()">
     <div id="thetime" class="data mt-2 text-xl"></div>
     <div class="data flex items-center justify-center mt-10 text-center" style="zoom: 0.65; display: flex;">
       <div class="speedometer" style="zoom: 0.7;">
@@ -64,5 +64,6 @@
         <span id="coolant"></span>
       </div>
   </body>
+  {% include 'settings_modal.html' %}
 {% endblock %}
 
