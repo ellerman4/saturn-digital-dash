@@ -8,19 +8,22 @@
 {% endblock %}
 
 {% block content %}
-<div class="flex flex-col justify-center h-full ml-8">
-    <div class="stopwatch">
-        <div class="time">00:00:00:00</div>
-        <button id="stopwatch-btn" class="start">Start</button>
-        <button id="stopwatch-btn" class="pause">Pause</button>
-        <button id="stopwatch-btn" class="reset">Reset</button>
-        <button id="stopwatch-btn" class="lap">Lap</button>
-    </div>
-    <div class="lapsBox text-center">
-        <ul class="laps">
+<body onload="modalHandler()">
+    <div class="flex flex-col justify-center h-full ml-8">
+        <div class="stopwatch">
+            <div class="time">00:00:00:00</div>
+            <button id="stopwatch-btn" class="start">Start</button>
+            <button id="stopwatch-btn" class="pause">Pause</button>
+            <button id="stopwatch-btn" class="reset">Reset</button>
+            <button id="stopwatch-btn" class="lap">Lap</button>
+        </div>
+        <div class="lapsBox text-center">
+            <ul class="laps">
 
-        </ul>
-        <button id="stopwatch-btn" class="clear">Clear Laps</button>
+            </ul>
+            <button id="stopwatch-btn" class="clear">Clear Laps</button>
+        </div>
     </div>
-</div>
+</body>
+{% include 'settings_modal.html' %}
 {% endblock %}
